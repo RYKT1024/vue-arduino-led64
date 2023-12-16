@@ -1,6 +1,6 @@
 <template>
-<div class="fixed bg-gray-50 h-full w-full">
-  <div class="bg-tricolor p-6 h-52" style="--bg-color-1: #fca5a5; --bg-color-2: #e4ffc5; --bg-color-3: #93c5fd;">
+<div class="fixed bg-gray-50  h-full w-full">
+  <div class="bg-tricolor p-6 h-48" style="--bg-color-1: #ff7878; --bg-color-2: #d1ff9d; --bg-color-3: #75b5ff;">
     <Menu class="shadow-xl shadow-blue h-full"/>
   </div>
   <div class="pt-8 pl-5 pr-5">
