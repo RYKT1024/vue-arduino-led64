@@ -1,0 +1,12 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+    .bg-tricolor {
+      background: linear-gradient(to right, var(--bg-color-1), var(--bg-color-2), var(--bg-color-3));
+    }
+  }
+  
+  
