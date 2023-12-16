@@ -16,14 +16,15 @@
     <label v-if="isConnected" class="swap">
         <input type="checkbox"/>
         <div class="swap-on font-medium text-5xl pt-4 text-center w-32 h-20 rounded-3xl mr-6 bg-blue-500 shadow text-white">ON</div>
-        <div class="swap-off font-medium text-5xl pt-4 text-center w-32 h-20 rounded-3xl mr-6 bg-gray-200 shadow">OFF</div>
+        <div class="swap-off font-medium text-5xl pt-4 text-center w-32 h-20 rounded-3xl mr-6 bg-red-200 shadow">OFF</div>
     </label>
   </div>
 </div>
 </template>
   
 <script setup>
-const isConnected = true
-
+import { ref, defineProps } from 'vue';
+const props = defineProps({isConnected:Boolean})
+const isConnected = ref(props.isConnected);
 
 </script>
