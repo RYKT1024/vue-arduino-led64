@@ -11,7 +11,7 @@
     </div>
     <div class="overlay" v-if="config_box" @click="setConfig(undefined, false)">
         <config-box v-if="config_box"
-                    :config="configs[selected]" @click.stop/>
+                    :config="configs[selected]" :setBoard="setBoard" @click.stop/>
     </div>
 </div>
 </template>
@@ -57,7 +57,7 @@ const setIPaddress = (ipAddress) => {
             if(key.includes("color"))
                 colors.push(value[key])
         });
-        configs.push({mode:value.mode, speed:value.speed, colors:colors, selected:false})
+        configs.push({mode:value.mode, brightness:value.brightness, speed:value.speed, colors:colors, selected:false})
     });
     setIPcomp(false)
     menu.value.isConnected = true
@@ -77,6 +77,25 @@ const setIPcomp = (bool) => {
 const switchLED = () => {
     const json = {
         mode: "switch",
+    }
+    api.set(JSON.stringify(json));
+}
+
+const setBoard = (config) => {
+    let json = {mode:config.mode, config:{onboard:selected.value, brightness:config.brightness, }}
+    if(config.mode=="breath"){
+        config.colors.length = 1
+        json.config.color = config.colors[0]
+        json.config.speed = config.speed
+    }
+    else if(config.mode=="gradient"){
+        if(!config.colors[1]){
+            config.colors[1] = [0,0,0]
+        }
+        config.colors.length = 2
+        json.config.color_from = config.colors[0]
+        json.config.color_to = config.colors[1]
+        json.config.speed = config.speed
     }
     api.set(JSON.stringify(json));
 }
