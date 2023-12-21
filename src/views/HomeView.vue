@@ -58,9 +58,15 @@ const setIPaddress = (ipAddress) => {
                 colors.push(value[key])
         });
         configs.push({mode:value.mode, brightness:value.brightness, speed:value.speed, colors:colors, selected:false})
+
     });
     setIPcomp(false)
     menu.value.isConnected = true
+    api.status()
+    .then(res => {
+        let index = res.data.status[1]
+        configs[index].selected = true
+    })
   })
 }
 
@@ -84,19 +90,28 @@ const switchLED = () => {
 const setBoard = (config) => {
     let json = {mode:config.mode, config:{onboard:selected.value, brightness:config.brightness, }}
     if(config.mode=="breath"){
+        if(!config.speed)
+            config.speed = 0.4
         config.colors.length = 1
         json.config.color = config.colors[0]
         json.config.speed = config.speed
     }
     else if(config.mode=="gradient"){
-        if(!config.colors[1]){
+        if(!config.colors[1])
             config.colors[1] = [0,0,0]
-        }
+        if(!config.speed)
+            config.speed = 0.4
         config.colors.length = 2
         json.config.color_from = config.colors[0]
         json.config.color_to = config.colors[1]
         json.config.speed = config.speed
     }
+    else if(config.mode=="static"){
+        config.colors.length = 1
+        json.config.color = config.colors[0]
+        config.speed = undefined
+    }
+    console.log(JSON.stringify(json))
     api.set(JSON.stringify(json));
 }
 </script>

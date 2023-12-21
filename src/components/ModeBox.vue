@@ -1,6 +1,6 @@
 
 <template>
-<div class="overflow-x-auto">
+<div class="overflow-x-auto select-none">
   <table class="table">
     <!-- head -->
     <thead class="text-4xl">
@@ -53,5 +53,7 @@ const listClass = (config) => {
 const setClass = (config) => {
     return config.selected ? "btn p-2 w-20 h-32 bg-indigo-600 text-white" : "btn p-2 w-20 h-32 bg-gray-50"
 }
+
+
 
 </script>
