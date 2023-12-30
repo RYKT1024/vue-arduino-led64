@@ -1,19 +1,14 @@
 # vue-arduino-led64
 
-## Project setup
-```
-yarn install
-```
+### 开发平台
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
+- Vue3
+- nodejs
 
-### Compiles and minifies for production
-```
-yarn build
-```
+### 功能结构
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+在本项目中，前端提供了单页的管理页面，实现了以下功能：
+
+- 连接用户输入的中控服务器
+- 查看当前连接LED设备的当前状态与模式
+- 更改当前连接LED设备的模式与状态
